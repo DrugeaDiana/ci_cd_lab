@@ -10,6 +10,23 @@ on:
 
 jobs:
   # Job to compile the application
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+
+      - name: Install dependencies
+        run: go mod download
+
+      # 01 - Add a step to run tests
+      - name: Run tests
+        run: go run main_test.go
   compile:
     # Specify the Os for the runner (container)
     runs-on: ubuntu-latest  # Use the latest Ubuntu runner
@@ -27,10 +44,7 @@ jobs:
 
       # Step 3: Download Go module dependencies
       - name: Install dependencies
-        run: go mod download
-
-      - name: Run tests
-        run: go run main_test.go 
+        run: go mod download 
 
       # Step 4: Compile the Go application into a binary named 'myapp'
       - name: Compile binary
