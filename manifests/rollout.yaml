@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: webserver
-          image: ghcr.io/drugeadiana/ci_cd_lab:latest
+          image: ghcr.io/drugeadiana/ci_cd_lab@sha256:3479bef13b5c2c198daa0635ab8990c48dfeb9afac1628de25c72afa13d7408e
           ports:
             - containerPort: 8080
           imagePullPolicy: Always
